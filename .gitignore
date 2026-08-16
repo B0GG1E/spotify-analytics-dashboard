@@ -1,0 +1,4 @@
+venv/
+.env
+spotify_data.db
+.cache
