@@ -9,4 +9,6 @@ cursor.execute("CREATE TABLE IF NOT EXISTS track_artists(track_id TEXT, artist_i
 cursor.execute("CREATE TABLE IF NOT EXISTS snapshots(id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, time_range TEXT, UNIQUE (date, time_range))")
 cursor.execute("CREATE TABLE IF NOT EXISTS snapshot_tracks(snapshot_id INTEGER, track_id TEXT, rank INTEGER, PRIMARY KEY (snapshot_id, track_id), FOREIGN KEY (snapshot_id) REFERENCES snapshots(id), FOREIGN KEY (track_id) REFERENCES tracks(id))")
 cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
-print(cursor.fetchall())
+
+def insert_artist(cursor, artist_id, name):
+    cursor.execute("INSERT OR IGNORE INTO artists (id, name) VALUES (?, ?)", (artist_id, name))
