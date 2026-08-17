@@ -12,3 +12,9 @@ cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
 
 def insert_artist(cursor, artist_id, name):
     cursor.execute("INSERT OR IGNORE INTO artists (id, name) VALUES (?, ?)", (artist_id, name))
+
+def insert_album(cursor, album_id, name, release_date):
+    cursor.execute("INSERT OR IGNORE INTO albums (id, name, release_date) VALUES (?, ?, ?)", (album_id, name, release_date))
+
+def insert_track(cursor, track_id, name, duration_ms, album_id):
+    cursor.execute("INSERT OR IGNORE INTO tracks (id, name, duration_ms, album_id) VALUES (?, ?, ?, ?)", (track_id, name, duration_ms, album_id))
